@@ -4,6 +4,7 @@ import { Pressable, useColorScheme } from "react-native";
 
 import Colors from "../../constants/Colors";
 import RootNavigator from "../src/navigation/RootNavigator";
+import CustomBottomTab from "../src/navigation/CustomBottomTab";
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -18,7 +19,7 @@ function TabBarIcon(props: {
 export default function TabLayout4() {
 	const colorScheme = useColorScheme();
 
-	return <RootNavigator />;
+	return <CustomBottomTab />;
 	return (
 		<Tabs
 			screenOptions={{

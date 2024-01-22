@@ -4,7 +4,6 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import Colors from '../../../constants/Colors';
 import { SwipableList } from '../components';
 
-
 function HomeScreen() {
   return (
     <View
@@ -18,7 +17,7 @@ function TravelScreen() {
   return (
     <View
       style={{ flex: 1 }}>
-      <SwipableList />
+      {/* <SwipableList /> */}
     </View>
   );
 }
@@ -62,28 +61,14 @@ export default function RootNavigator() {
     }
   };
   return (
-    <View style={{ flex: 1, backgroundColor: 'red' }} >
-      < Tab.Navigator
-        screenOptions={tabBarOptions}
-        //         screenOptions={
-        //           tabBarOptions,
-        //           tabBarStyle: {
-        //         backgroundColor: Colors.light.background,
-        //       // fontSize: 32,
-        //       // fontColor: 'pink',
-        //   }
-        // }
-        sceneContainerStyle={{ backgroundColor: "white" }}
-      >
-        <Tab.Screen
-          options={{
-
-          }}
-          name="Ongoing trip" component={HomeScreen} />
-        <Tab.Screen name="Upcoming trip" component={TravelScreen} />
-        <Tab.Screen name="Settings2" component={TravelScreen1} />
-        <Tab.Screen name="Settings23" component={TravelScreen1} />
-      </Tab.Navigator >
-    </View >
+    <Tab.Navigator
+    screenOptions={tabBarOptions}
+    sceneContainerStyle={{ backgroundColor: "white" }}
+    >
+      <Tab.Screen name="Ongoing trip" component={HomeScreen} />
+      <Tab.Screen name="Upcoming trip" component={TravelScreen} />
+      <Tab.Screen name="Settings2" component={TravelScreen1} />
+      <Tab.Screen name="Settings23" component={TravelScreen1} />
+    </Tab.Navigator >
   );
 }
