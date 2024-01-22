@@ -58,7 +58,7 @@ export default function SwipableList() {
   const renderItem = ({ item, index }, onClick) => {
 
     const closeRow = (index) => {
-      console.log('closerow');
+      // console.log('closerpow');
       if (prevOpenedRow && prevOpenedRow !== row[index]) {
         prevOpenedRow.close();
       }
@@ -95,18 +95,32 @@ export default function SwipableList() {
     };
 
     return (
-      <Swipeable
-        renderRightActions={(progress, dragX) =>
-          renderRightActions(progress, dragX, onClick)
-        }
-        containerStyle={{
-          overflow: 'hidden'
-        }}
-        onSwipeableOpen={() => closeRow(index)}
-        ref={(ref) => (row[index] = ref)}
-        rightOpenValue={-100}>
-        <TicketPopComponent item={item} />
-      </Swipeable>
+      <View style={{
+        // backgroundColor: "red",
+        flex: 1,
+        backgroundColor: '#161616',
+        zIndex: 1,
+        marginHorizontal: 16,
+        borderRadius: 16
+      }}>
+        <Swipeable
+          renderRightActions={(progress, dragX) =>
+            renderRightActions(progress, dragX, onClick)
+          }
+          containerStyle={{
+            zIndex: 200
+          }}
+          childrenContainerStyle={{
+            zIndex: 200,
+            backgroundColor: "rgba(17,17,17,0.08)",
+          }}
+          onSwipeableOpen={() => closeRow(index)}
+          ref={(ref) => (row[index] = ref)}
+          rightOpenValue={-100}>
+          <ViewTicket item={item} />
+
+        </Swipeable>
+      </View>
     );
   };
 
@@ -167,7 +181,6 @@ export default function SwipableList() {
         data={listData}
         renderItem={(v) =>
           renderItem(v, () => {
-            console.log('Pressed', v);
             deleteItem(v);
           })
         }
@@ -179,8 +192,9 @@ export default function SwipableList() {
         )}
         style={{
           paddingTop: 30,
+
         }}
-        contentContainerStyle={{ paddingBottom: 200 }}
+        contentContainerStyle={{ paddingBottom: 200, }}
         keyExtractor={(item) => item.id}></FlatList>
     </View>
   );

@@ -1,11 +1,20 @@
 import React from "react"
+import { ImageBackgroundBase } from "react-native"
 import { StyleSheet, Image, Text, View, ImageBackground, Dimensions, Pressable } from "react-native"
 
 export default function ViewTicket({ item }) {
-  console.log('item', item)
+  // console.log('item', item)
   return (
     <View style={styles.Group5}>
+      {/* <ImageBackground
+        source={require('../assets/images/TicketBG.png')}
+        style={{
+          // width: '100%', 
+          height: '100%',
+          width: Dimensions.get('window').width - 40,
 
+        }}
+      > */}
       <View style={styles.Group308}>
         <View style={styles.Group315}>
           <View style={styles.Group2109}>
@@ -27,12 +36,12 @@ export default function ViewTicket({ item }) {
         </View>
         <Text style={styles.Text8}>View Ticket</Text>
       </View>
-
-      <View style={styles.Ellipse16} />
-      <View style={styles.Ellipse17} />
-      <View style={styles.Ellipse18} />
-      <View style={styles.Ellipse19} />
-      <View style={styles.Ellipse20} />
+      
+        <View style={styles.Ellipse16} />
+        <View style={styles.Ellipse17} />
+        <View style={styles.Ellipse18} />
+        <View style={styles.Ellipse19} />
+        <View style={styles.Ellipse20} />
     </View>
   )
 }
@@ -41,7 +50,10 @@ const styles = StyleSheet.create({
   Group5: {
     position: "relative",
     height: 140,
-    marginLeft: 20
+    backgroundColor: 'white',
+    zIndex: 250,
+    overflow: "hidden"
+    // marginLeft: 16
   },
   Group308: {
     position: "absolute",
