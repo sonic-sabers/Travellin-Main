@@ -46,6 +46,8 @@ export default function RootNavigator() {
       fontWeight: '300',
       height: 25,
     },
+    tabBarActiveTintColor: '#000',
+    tabBarInactiveTintColor: '#00000020',
     tabBarGap: 0,
     tabBarBounces: true,
     animationEnabled: true,
@@ -54,16 +56,20 @@ export default function RootNavigator() {
       height: 1,
       borderRadiusTopRight: 1,
       borderRadiusTopLeft: 1,
-      maxWidth: '90%'
+      maxWidth: '90%',
     },
     tabBarIndicatorContainerStyle: {
+      backgroundColor: 'white',
       height: '100%',
     }
   };
   return (
     <Tab.Navigator
-    screenOptions={tabBarOptions}
-    sceneContainerStyle={{ backgroundColor: "white" }}
+      screenOptions={tabBarOptions}
+      safeAreaInsets={{
+        top: 5,
+      }}
+      sceneContainerStyle={{ backgroundColor: "white" }}
     >
       <Tab.Screen name="Ongoing trip" component={HomeScreen} />
       <Tab.Screen name="Upcoming trip" component={TravelScreen} />

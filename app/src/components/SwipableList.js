@@ -93,19 +93,52 @@ export default function SwipableList() {
         </TouchableOpacity>
       );
     };
+    const renderLeftActions = (progress, dragX, onClick) => {
+      return (
+        <TouchableOpacity
+          onPress={deleteItem}
+          style={{
+            justifyContent: 'center',
+            width: 100,
+            backgroundColor: '#161616',
+            borderTopRightRadius: 12,
+            borderBottomRightRadius: 12,
+            alignItems: "center",
+            height: 140,
+          }}>
+          <>
+            <Ionicons name="add-circle-outline" size={24} color="white" />
+            <Text style={{
+              textAlign: 'center',
+              color: '#A0A0A0',
+              fontSize: 10,
+              fontFamily: 'Inter_400Regular',
+              lineHeight: 15,
+              maxWidth: 70,
+              marginTop: 10
+            }}>Show QR code</Text>
+          </>
+        </TouchableOpacity>
+      );
+    };
 
     return (
-      <View style={{
-        // backgroundColor: "red",
-        flex: 1,
-        backgroundColor: '#161616',
-        zIndex: 1,
-        marginHorizontal: 16,
-        borderRadius: 16
-      }}>
+      <View
+        style={{
+          // backgroundColor: "red",
+          flex: 1,
+          backgroundColor: '#161616',
+          zIndex: 1,
+          marginHorizontal: 16,
+          borderRadius: 16,
+          overflow: 'hidden'
+        }}>
         <Swipeable
           renderRightActions={(progress, dragX) =>
             renderRightActions(progress, dragX, onClick)
+          }
+          renderLeftActions={(progress, dragX) =>
+            renderLeftActions(progress, dragX, onClick)
           }
           containerStyle={{
             zIndex: 200
