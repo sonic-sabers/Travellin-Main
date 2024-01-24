@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function Homescreen() {
   return (
-    <View>
-      <Text>Homescreen</Text>
+    <View style={{ flex: 1, backgroundColor: 'white',justifyContent:"center",alignItems:'center' }}>
+      <Text>Random Screen</Text>
     </View>
   )
 }
