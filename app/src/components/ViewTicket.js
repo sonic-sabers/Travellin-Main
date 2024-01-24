@@ -36,12 +36,12 @@ export default function ViewTicket({ item }) {
         </View>
         <Text style={styles.Text8}>View Ticket</Text>
       </View>
-      
-        <View style={styles.Ellipse16} />
-        <View style={styles.Ellipse17} />
-        <View style={styles.Ellipse18} />
-        <View style={styles.Ellipse19} />
-        <View style={styles.Ellipse20} />
+
+      <View style={styles.Ellipse16} />
+      <View style={styles.Ellipse17} />
+      <View style={styles.Ellipse18} />
+      <View style={styles.Ellipse19} />
+      <View style={styles.Ellipse20} />
     </View>
   )
 }
@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
     height: 140,
     backgroundColor: 'white',
     zIndex: 250,
-    overflow: "hidden"
+    overflow: "hidden",
+    borderRadius: 12,
     // marginLeft: 16
   },
   Group308: {
