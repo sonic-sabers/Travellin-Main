@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Text, View, StyleSheet, FlatList, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, FlatList, Button, TouchableHighlight, TouchableOpacity, Pressable } from 'react-native';
+import DragList from 'react-native-draglist';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { Octicons, Entypo, Ionicons } from '@expo/vector-icons';
 
@@ -49,14 +50,16 @@ const DATA = [
 
 export default function SwipableList() {
   const [listData, setListData] = useState(DATA);
-  let row: Array<any> = [];
+  const [activeItem, setActiveItem] = useState(null);
+
+  let row = [];
   let prevOpenedRow;
 
   /**
    *
    */
-  const renderItem = ({ item, index }, onClick) => {
-
+  const renderItem = (props) => {
+    const { item, onDragStart, onClick, onDragEnd, index, isActive, drag } = props;
     const closeRow = (index) => {
       // console.log('closerpow');
       if (prevOpenedRow && prevOpenedRow !== row[index]) {
@@ -122,17 +125,28 @@ export default function SwipableList() {
       );
     };
 
+    const handleLongPress = (newData) => {
+      onDragStart(newData)
+      setActiveItem(item.id);
+    };
+
+    const handleDragEnd = (newData) => {
+      onDragEnd(newData)
+      setActiveItem(null);
+    };
+
     return (
-      <View
-        style={{
-          // backgroundColor: "red",
+      <Pressable
+        onLongPress={handleLongPress}
+        onPressOut={handleDragEnd}
+        style={[{
           flex: 1,
           backgroundColor: '#161616',
           zIndex: 1,
           marginHorizontal: 16,
           borderRadius: 16,
           overflow: 'hidden'
-        }}>
+        },]}>
         <Swipeable
           renderRightActions={(progress, dragX) =>
             renderRightActions(progress, dragX, onClick)
@@ -146,14 +160,15 @@ export default function SwipableList() {
           childrenContainerStyle={{
             zIndex: 200,
             backgroundColor: "rgba(17,17,17,0.08)",
+            // backgroundColor: 'red'
           }}
           onSwipeableOpen={() => closeRow(index)}
           ref={(ref) => (row[index] = ref)}
           rightOpenValue={-100}>
-          <ViewTicket item={item} />
+          <ViewTicket item={item} isActive={activeItem === item.id} />
 
         </Swipeable>
-      </View>
+      </Pressable>
     );
   };
 
@@ -206,10 +221,73 @@ export default function SwipableList() {
       </HStack>
     )
   }
+  const register = () => {
+
+    let email = 'emlsvsd@email.com'
+    let password = 'wedwed'
+    let phone = 'wedewdw'
+    console.log('phone', phone)
+
+  }
+
+  async function onReordered(fromIndex, toIndex) {
+    const copy = [...listData]; // Don't modify react data in-place
+    const removed = copy.splice(fromIndex, 1);
+
+    copy.splice(toIndex, 0, removed[0]); // Now insert at the new pos
+    setListData(copy);
+  }
 
   return (
     <View style={styles.container}>
-      <FlatList
+      {/* <Button
+        title='rever'
+        onPress={register}
+      /> */}
+      <DragList
+        data={listData}
+        renderItem={(v) =>
+          renderItem(v, () => {
+            deleteItem(v);
+          })
+        }
+        onReordered={onReordered}
+        ListHeaderComponent={ListHeader}
+        onDragEnd={(newData) => console.log(newData)}
+
+        ItemSeparatorComponent={() => (
+          <View style={{
+            marginBottom: 20,
+          }} />
+        )}
+        style={{
+          paddingTop: 30,
+
+        }}
+        contentContainerStyle={{ paddingBottom: 200, }}
+        keyExtractor={(item) => item.id}
+        renderDragHandle={({ drag, isActive }) => (
+          <View
+            style={{
+              width: 20,
+              height: 20,
+              backgroundColor: isActive ? 'red' : 'blue',
+              borderRadius: 10,
+            }}
+            onTouchStart={drag}
+          />
+        )}
+
+        // renderDragHandle={({ style }) => <YourDragHandleComponent style={style} />}
+        ListComponent={FlatList} // Use FlatList as the underlying list component
+        ListProps={{
+          showsVerticalScrollIndicator: false
+
+          // Additional FlatList props can be passed here
+          // Example: horizontal: true,
+        }}
+      />
+      {/* <FlatList
         showsVerticalScrollIndicator={false}
         data={listData}
         renderItem={(v) =>
@@ -228,7 +306,7 @@ export default function SwipableList() {
 
         }}
         contentContainerStyle={{ paddingBottom: 200, }}
-        keyExtractor={(item) => item.id}></FlatList>
+        keyExtractor={(item) => item.id} /> */}
     </View>
   );
 }
