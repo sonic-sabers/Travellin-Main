@@ -2,10 +2,10 @@ import React from "react"
 import { ImageBackgroundBase } from "react-native"
 import { StyleSheet, Image, Text, View, ImageBackground, Dimensions, Pressable } from "react-native"
 
-export default function ViewTicket({ item }) {
-  // console.log('item', item)
+const ViewTicket = React.memo(({ item, isActive }) => {
+  console.log('isActive', isActive)
   return (
-    <View style={styles.Group5}>
+    <View style={[styles.Group5, { backgroundColor: isActive ? 'lightblue' : 'white', }]}>
       {/* <ImageBackground
         source={require('../assets/images/TicketBG.png')}
         style={{
@@ -42,9 +42,10 @@ export default function ViewTicket({ item }) {
       <View style={styles.Ellipse18} />
       <View style={styles.Ellipse19} />
       <View style={styles.Ellipse20} />
-    </View>
-  )
-}
+      </View>
+  );
+});
+export default ViewTicket;
 
 const styles = StyleSheet.create({
   Group5: {
