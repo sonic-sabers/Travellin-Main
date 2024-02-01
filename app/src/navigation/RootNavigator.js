@@ -64,19 +64,17 @@ export default function RootNavigator() {
     }
   };
   return (
-    <View style={{ flex: 1, backgroundColor: '#fff', }}>
-      <Tab.Navigator
-        screenOptions={tabBarOptions}
-        safeAreaInsets={{
-          top: 5,
-        }}
-        sceneContainerStyle={{ backgroundColor: "white" }}
-      >
-        <Tab.Screen name="Ongoing trip" component={HomeScreen} />
-        <Tab.Screen name="Upcoming trip" component={TravelScreen} />
-        <Tab.Screen name="Planned trip" component={TravelScreen1} />
-        <Tab.Screen name="Lets see trip" component={TravelScreen1} />
-      </Tab.Navigator >
-    </View>
+    <Tab.Navigator
+      screenOptions={tabBarOptions}
+      safeAreaInsets={{
+        top: 5,
+      }}
+      sceneContainerStyle={{ backgroundColor: "white" }}
+    >
+      <Tab.Screen name="Ongoing trip" component={HomeScreen} />
+      <Tab.Screen name="Upcoming trip" component={TravelScreen} />
+      <Tab.Screen name="Settings2" component={TravelScreen1} />
+      <Tab.Screen name="Settings23" component={TravelScreen1} />
+    </Tab.Navigator >
   );
 }
