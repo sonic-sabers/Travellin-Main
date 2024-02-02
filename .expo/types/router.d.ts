@@ -7,7 +7,7 @@ declare module "expo-router" {
   export * from 'expo-router/build';
 
   // prettier-ignore
-  type StaticRoutes = `/` | `/(tabs)/_layout` | `/_layout` | `/(tabs)/` | `/(tabs)` | `/(tabs)/two` | `/two` | `/+html` | `/modal` | `/src/assets/images/TicketBG.png` | `/src/components/AnimatedBottomTab` | `/src/components/SwipableList` | `/src/components/TabBar` | `/src/components/TicketBar` | `/src/components/TicketPopComponent` | `/src/components/ViewTicket` | `/src/components/` | `/src/components/moleclues/HStack` | `/src/components/moleclues/VStack` | `/src/constants/Colors` | `/src/constants/` | `/src/helpers/` | `/src/helpers/useKeyboardVisible` | `/src/navigation/CustomBottomTab` | `/src/navigation/RootNavigator` | `/src/screens/Homescreen`;
+  type StaticRoutes = `/` | `/(tabs)/_layout` | `/_layout` | `/(tabs)/` | `/(tabs)` | `/(tabs)/two` | `/two` | `/+html` | `/modal` | `/src/assets/images/TicketBG.png` | `/src/components/AnimatedBottomTab` | `/src/components/SwipableList` | `/src/components/TabBar` | `/src/components/TicketBar` | `/src/components/TicketPopComponent` | `/src/components/ViewTicket` | `/src/components/` | `/src/components/moleclues/HStack` | `/src/components/moleclues/VStack` | `/src/navigation/CustomBottomTab` | `/src/navigation/RootNavigator` | `/src/screens/Homescreen` | `/src/utils/declarations.d` | `/src/utils/envVar` | `/src/utils/extras/RandomApp` | `/src/utils/helpers/` | `/src/utils/helpers/useKeyboardVisible` | `/src/utils/theme/colors` | `/src/utils/theme/font` | `/src/utils/theme/fontSize` | `/src/utils/theme/`;
   // prettier-ignore
   type DynamicRoutes<T extends string> = `/${CatchAllRoutePart<T>}`;
   // prettier-ignore
