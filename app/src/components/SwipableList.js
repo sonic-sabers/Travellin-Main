@@ -144,7 +144,7 @@ export default function SwipableList() {
           backgroundColor: '#161616',
           zIndex: 1,
           marginHorizontal: 16,
-          borderRadius: 16,
+          borderRadius: 12,
           overflow: 'hidden'
         },]}>
         <Swipeable
@@ -155,7 +155,9 @@ export default function SwipableList() {
             renderLeftActions(progress, dragX, onClick)
           }
           containerStyle={{
-            zIndex: 200
+            zIndex: 200,
+            borderRadius: 12,
+            overflow: 'hidden'
           }}
           childrenContainerStyle={{
             zIndex: 200,

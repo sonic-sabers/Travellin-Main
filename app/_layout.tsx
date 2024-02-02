@@ -16,14 +16,15 @@ import "@tamagui/core/reset.css";
 import { TamaguiProvider, createTamagui } from "tamagui";
 
 // some nice defaults:
-import { config } from "@tamagui/config/v2";
+import { createTokens, Theme } from "tamagui";
 
 // you usually export this from a tamagui.config.ts file:
+import { config } from "@tamagui/config/v2";
 // this can be as simple as an empty object
 const tamaguiConfig = createTamagui(config);
 
 // this makes typescript properly type everything based on the config
-type Conf = typeof tamaguiConfig;
+// type Conf = typeof tamaguiConfig;
 declare module "tamagui" {
 	interface TamaguiCustomConfig extends Conf {}
 }
@@ -84,11 +85,34 @@ export default function RootLayout() {
 	return <RootLayoutNav />;
 }
 
+const tokens = createTokens({
+	color: {
+		darkRed: "#550000",
+		lightRed: "#ff0000",
+	},
+	space: {},
+	size: {},
+	radius: {},
+	zIndex: {},
+});
+
+// const config = createTamagui({
+// 	tokens,
+// 	themes: {
+// 		dark: {
+// 			red: tokens.color.darkRed,
+// 		},
+// 		light: {
+// 			red: tokens.color.lightRed,
+// 		},
+// 	},
+// });
+
 function RootLayoutNav() {
 	const colorScheme = useColorScheme();
 
 	return (
-		<TamaguiProvider config={tamaguiConfig}>
+		<TamaguiProvider defaultTheme="light" config={tamaguiConfig}>
 			<MenuProvider>
 				<SafeAreaView style={{ flex: 1 }}>
 					<ThemeProvider
